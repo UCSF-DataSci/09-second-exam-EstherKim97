@@ -17,7 +17,7 @@ def insurance_info(data, insurance_file, base_cost):
     with open(insurance_file, "r") as insurance_file:
         insurance_types = [line.strip() for line in insurance_file.readlines()]
     
-    # randomly assign using random function, but keeping constant across same patient ID
+    # randomly assign insurance type using random function, but keeping constant across same patient ID
     data["insurance_type"] = data["patient_id"].apply(lambda patient_id: random.Random(hash(patient_id)).choice(insurance_types))
 
     # Generate random visit costs based on insurance type with variation between -10 % and 10 %
